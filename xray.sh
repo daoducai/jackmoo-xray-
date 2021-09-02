@@ -286,9 +286,9 @@ getData() {
 	    local_addr=`curl ipv4.icanhazip.com`
             if [ $real_addr == $local_addr ]; then
                 colorEcho ${BLUE}  "${DOMAIN} 解析结果：${real_addr}"
-	else
+	    else
                 colorEcho ${RED}  " 域名未解析到当前服务器IP!"
-		exit 1
+	        exit 1
             fi
         fi
     fi

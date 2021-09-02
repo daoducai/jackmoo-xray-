@@ -283,6 +283,7 @@ getData() {
         else
             read ${DOMAIN}
 	    real_addr=`ping ${DOMAIN} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
+	    #local_addr=`curl v4.ident.me`
 	    local_addr=`curl ipv4.icanhazip.com`
             if [ $real_addr == $local_addr ]; then
                 colorEcho ${BLUE}  "${DOMAIN} 解析正常"

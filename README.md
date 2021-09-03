@@ -5,7 +5,7 @@
 ## 一键脚本
 
 
-`bash <(curl -sL https://raw.githubusercontent.com/a31663835/-xray-/master/xray.sh)`
+`bash <(curl -sL https://raw.githubusercontent.com/a31663835/jackmoo-xray-/main/xray.sh)`
 
 
 

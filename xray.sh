@@ -282,9 +282,9 @@ getData() {
             KEY_FILE="/usr/local/etc/xray/${DOMAIN}.key"
         else
             read DOMAIN
-	    real_ip=$(ping "${DOMAIN}" -c 1 | sed '1{s/[^(]*(//;s/).*//;q}')
-	    local_ip=$(curl -s https://ipinfo.io/ip)
-            if [[ ${real_ip} == ${local_ip} ]] ; then
+	    real_ip=`ping "${DOMAIN}" -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
+	    local_ip=`curl -s https://ipinfo.io/ip`
+            if [ $real_ip == $local_ip ] ; then
                 colorEcho ${BLUE}  "${DOMAIN} 解析结果：${real_ip}"
 	    else
                 colorEcho ${RED}  " 域名未解析到当前服务器IP(${IP})!"

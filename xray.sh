@@ -281,9 +281,16 @@ getData() {
             CERT_FILE="/usr/local/etc/xray/${DOMAIN}.pem"
             KEY_FILE="/usr/local/etc/xray/${DOMAIN}.key"
         else
-            read $DOMAIN
 	    real_ip=`ping ${DOMAIN} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
-	    local_ip=`curl https://ipinfo.io/ip`
+	    local_addr=`curl ipv4.icanhazip.com`
+	    #local_ip=`curl https://ipinfo.io/ip`
+	    #local_ip=`curl https://api.ip.sb/ip`
+	    #local_ip=`curl https://api.ipify.org`
+	    #local_ip=`curl https://ip.seeip.org`
+	    #local_ip=`curl https://ifconfig.co/ip`
+	    #local_ip=`curl https://api.myip.com | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}"`
+	    #local_ip=`curl icanhazip.com`
+	    #local_ip=`curl myip.ipip.net | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}"`	    
             if [ $real_ip == $local_ip ] ; then
                 colorEcho ${BLUE}  "${DOMAIN} 解析结果：${real_ip}"
 	    else

@@ -291,7 +291,7 @@ getData() {
 	    #local_ip=`curl https://api.myip.com | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}"`
 	    #local_ip=`curl icanhazip.com`
 	    #local_ip=`curl myip.ipip.net | grep -oE "([0-9]{1,3}\.){3}[0-9]{1,3}"`	    
-            if [ $real_ip == $local_ip ] ; then
+            if [[ $real_ip == $local_ip ]] ; then
                 colorEcho ${BLUE}  "${DOMAIN} 解析结果：${real_ip}"
 	    else
                 colorEcho ${RED}  " 域名未解析到当前服务器IP(${IP})!"

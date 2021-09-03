@@ -281,9 +281,9 @@ getData() {
             CERT_FILE="/usr/local/etc/xray/${DOMAIN}.pem"
             KEY_FILE="/usr/local/etc/xray/${DOMAIN}.key"
         else
-            read DOMAIN
-	    real_ip=`ping "DOMAIN" -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
-	    local_ip=`curl -s https://ipinfo.io/ip`
+            read $DOMAIN
+	    real_ip=`ping ${DOMAIN} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
+	    local_ip=`curl https://ipinfo.io/ip`
             if [ $real_ip == $local_ip ] ; then
                 colorEcho ${BLUE}  "${DOMAIN} 解析结果：${real_ip}"
 	    else

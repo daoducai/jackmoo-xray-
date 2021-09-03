@@ -281,15 +281,17 @@ getData() {
             CERT_FILE="/usr/local/etc/xray/${DOMAIN}.pem"
             KEY_FILE="/usr/local/etc/xray/${DOMAIN}.key"
         else
+	    read DOMAIN
 	    real_addr=`ping ${DOMAIN} -c 1 | sed '1{s/[^(]*(//;s/).*//;q}'`
 	    #local_addr=`curl v4.ident.me`
 	    local_addr=`curl ipv4.icanhazip.com`
-            if [ [$real_addr == $local_addr ]]; then
+            if [ $real_addr == $local_addr ]; then
                 colorEcho ${BLUE}  "${DOMAIN} 解析结果：${real_addr}"
 	    else
                 colorEcho ${RED}  " 域名未解析到当前服务器IP!"
 	        exit 1
             fi
+	    exit 0
         fi
     fi
 

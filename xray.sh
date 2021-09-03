@@ -283,10 +283,10 @@ getData() {
         else
             #resolve=`curl -sL myip.ipip.net/hostip.php?d=${DOMAIN}`
             #res=`echo -n ${resolve} | grep ${IP}`
-	    real_ip=$(ping "${domain}" -c 1 | sed '1{s/[^(]*(//;s/).*//;q}')
+	    real_ip=$(ping "${DOMAIN}" -c 1 | sed '1{s/[^(]*(//;s/).*//;q}')
 	    local_ip=$(curl -s https://ipinfo.io/ip)
             if ["${real_ip}" = "${local_ip}" ]; then
-                colorEcho ${BLUE}  "${DOMAIN} 解析结果：${resolve}"
+                colorEcho ${BLUE}  "${DOMAIN} 解析结果：${local_ip}"
 	    else
                 colorEcho ${RED}  " 域名未解析到当前服务器IP(${IP})!"
                 exit 1

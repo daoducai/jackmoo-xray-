@@ -285,7 +285,7 @@ getData() {
             #res=`echo -n ${resolve} | grep ${IP}`
 	    real_ip=$(ping "${DOMAIN}" -c 1 | sed '1{s/[^(]*(//;s/).*//;q}')
 	    local_ip=$(curl -s https://ipinfo.io/ip)
-            if ["${real_ip}" = "${local_ip}" ]; then
+            if ["${real_ip}" == "${local_ip}" ]; then
                 colorEcho ${BLUE}  "${DOMAIN} 解析结果：${local_ip}"
 	    else
                 colorEcho ${RED}  " 域名未解析到当前服务器IP(${IP})!"
